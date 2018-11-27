@@ -9,6 +9,7 @@ const EnumArray = values => class {
   static get collection() {
     return values;
   }
+
   [Symbol.toPrimitive]() {
     return this.value;
   }
@@ -28,6 +29,9 @@ const EnumCollection = values => {
     static get collection() {
       return values;
     }
+      static get indexation() {
+     return index;
+  }
     [Symbol.toPrimitive](hint) {
       const key = this.key;
       if (hint === 'number') return parseInt(key, 10);
@@ -100,6 +104,7 @@ const testEnum = Month => {
     12: 'December'
   });
   console.dir(Month.collection);
+  console.dir(Month.indexation);
   testEnum(Month);
 }
 
